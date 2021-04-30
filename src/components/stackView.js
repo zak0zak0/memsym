@@ -1,20 +1,15 @@
-import { render } from "@testing-library/react";
-import React, { useContext } from "react";
+import React from "react";
 import { Table } from "react-bootstrap";
 import { DataType } from "../memsym/data-type";
 import { MemContext } from "./memcontext";
 import { toByteString } from '../memsym/utils';
 
 export class StackView extends React.Component {
-
-
-
     render() {
         return (
             <MemContext.Consumer>
                 {this.renderBody}
             </MemContext.Consumer>
-
         );
     }
 
@@ -34,7 +29,7 @@ export class StackView extends React.Component {
                     {records.map((r, i) => (
                         <tr key={i}>
                             <td>{i}</td>
-                            <td>{this.renderBin(r.value)}</td>
+                            <td>{this.renderBin(r.dataType, r.value)}</td>
                             <td>{r.value}</td>
                             <td>{r.label}</td>
                             <td>{this.renderType(r.dataType)}</td>
@@ -45,20 +40,26 @@ export class StackView extends React.Component {
         )
     }
 
-    renderBin = (value) => {
+    renderBin = (dataType, value) => {
+        if (dataType === DataType.CHAR) {
+            value = value.charCodeAt(0);
+        }
+        if (dataType === DataType.BOOL) {
+            value = value === "true" ? 1 : 0;
+        }
         return toByteString(value);
     }
 
     renderType = (type) => {
         switch (+type) {
             case DataType.INT:
-                return 'INT';
+                return 'int';
             case DataType.BOOL:
-                return 'BOOL';
+                return 'bool';
             case DataType.CHAR:
-                return 'CHAR';
+                return 'char';
             case DataType.STRING:
-                return 'STRING';
+                return 'string';
             case DataType.NULL:
             default:
                 return '';

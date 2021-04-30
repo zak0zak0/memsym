@@ -13,7 +13,7 @@ export const RecordForm = () => {
 
   const onClick = () => {
     let actual = value;
-    if (+type === DataType.BOOL && !value) {
+    if (+type === DataType.BOOL && !(value == "true" || value == "false") ) {
       actual = "true";
     }
     memsym.declare(type, name, actual);
