@@ -36,13 +36,7 @@ function App() {
               </Card.Body>
             </Card>
           </Col>
-
         </Row>
-        {/* <Row>
-          <Stack />
-          <Heap />
-        </Row> */}
-
       </Container>
     </MemProvider>
   );
