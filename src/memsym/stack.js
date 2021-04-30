@@ -24,6 +24,7 @@ export class Stack {
         while (!found && index < records.length) {
             if (records[index].dataType === DataType.NULL) {
                 found = true;
+                break;
             }
             index++;
         }

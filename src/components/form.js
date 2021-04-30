@@ -26,7 +26,7 @@ export const RecordForm = () => {
         <Form.Label>Type</Form.Label>
         <Form.Control as="select" name="type" value={type} onChange={(e => setType(e.target.value))}>
           <option value={DataType.INT}>int</option>
-          <option value={DataType.UINT}>uint</option>
+          <option value={DataType.CHAR}>char</option>
           <option value={DataType.BOOL}>bool</option>
           <option value={DataType.STRING}>string</option>
         </Form.Control>

@@ -1,6 +1,7 @@
 import './App.css';
 import { MemProvider } from './components/memcontext';
 import { RecordForm } from './components/form';
+import { StackView } from './components/stackView';
 import { Container, Row, Col, Card } from 'react-bootstrap';
 import { MemSym } from './memsym/memsym';
 
@@ -23,6 +24,19 @@ function App() {
               </Card.Body>
             </Card>
           </Col>
+          <Col xs="12" sm="12" md="8" lg="6">
+            <Card>
+              <Card.Body>
+                <Card.Title>
+                  Stack
+                </Card.Title>
+                <Card.Body>
+                  <StackView records={memsym.records} />
+                </Card.Body>
+              </Card.Body>
+            </Card>
+          </Col>
+
         </Row>
         {/* <Row>
           <Stack />

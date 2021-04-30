@@ -10,7 +10,7 @@ export function MemProvider({ memsym, children }) {
     }
 
     return (
-        <MemContext.Provider value={{memsym, onUpdate}}>
+        <MemContext.Provider value={{memsym, records: memsym.records, onUpdate}}>
             {children}
         </MemContext.Provider>
     );
