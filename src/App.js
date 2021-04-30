@@ -1,30 +1,36 @@
-import { Heap, Stack } from './components/stack';
 import './App.css';
-import Memory, { Record } from './stack/memory';
-import { type } from './stack/display';
-import { MemProvider } from './components/memprovider';
+import { MemProvider } from './components/memcontext';
 import { RecordForm } from './components/form';
-import { Row } from 'react-bootstrap';
+import { Container, Row, Col, Card } from 'react-bootstrap';
+import { MemSym } from './memsym/memsym';
 
-const memory = new Memory();
-// memory.declareVariable(new Record('a', type.UINT, 5));
-// memory.declareVariable(new Record('b', type.INT, -5));
-// memory.declareVariable(new Record('c', type.BOOL, true));
-// memory.declareVariable(new Record('d', type.STRING, 'abc'));
-// memory.declareVariable(new Record('e', type.STRING, 'def'));
-
+const memsym = new MemSym();
 
 function App() {
   return (
-    <div>
-      <MemProvider memory={memory}>
-        <RecordForm />
+    <MemProvider memsym={memsym}>
+      <Container>
         <Row>
+          <Col xs="12" sm="6" md="4" lg="3">
+            <Card>
+              <Card.Body>
+                <Card.Title>
+                  Declare variable
+                </Card.Title>
+                <Card.Body>
+                  <RecordForm />
+                </Card.Body>
+              </Card.Body>
+            </Card>
+          </Col>
+        </Row>
+        {/* <Row>
           <Stack />
           <Heap />
-        </Row>
-      </MemProvider>
-    </div>
+        </Row> */}
+
+      </Container>
+    </MemProvider>
   );
 }
 
