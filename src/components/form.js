@@ -12,7 +12,11 @@ export const RecordForm = () => {
   const { memsym, onUpdate } = useContext(MemContext);
 
   const onClick = () => {
-    memsym.declare(type, name, value);
+    let actual = value;
+    if (+type === DataType.BOOL && !value) {
+      actual = "true";
+    }
+    memsym.declare(type, name, actual);
     onUpdate();
   }
 
