@@ -1,6 +1,7 @@
 import { useState, useContext, useEffect } from "react"
 import { Form, Button, Col, FormControl, FormGroup } from "react-bootstrap";
 import { DataType } from "../memsym/data-type";
+import { MemContext } from "./memcontext";
 
 
 export const RecordForm = () => {
@@ -8,13 +9,18 @@ export const RecordForm = () => {
   const [type, setType] = useState(DataType.INT);
   const [value, setValue] = useState(0);
 
+  const { memsym, onUpdate } = useContext(MemContext);
 
+  const onClick = () => {
+    memsym.declare(type, name, value);
+    onUpdate();
+  }
 
   return (
     <Form>
       <FormGroup>
-        <Form.Label>Name</Form.Label>
-        <Form.Control value={name} onChange={e => setName(e.target.value)} name="name" type="text" placeholder="Name" />
+        <Form.Label>Label</Form.Label>
+        <Form.Control value={name} onChange={e => setName(e.target.value)} name="name" type="text" placeholder="Label" />
       </FormGroup>
       <FormGroup>
         <Form.Label>Type</Form.Label>
@@ -39,7 +45,7 @@ export const RecordForm = () => {
       </FormGroup>
 
 
-      <Button variant="primary" type="button">
+      <Button variant="primary" type="button" onClick={onClick}>
         Declare
       </Button>
     </Form>
