@@ -10,4 +10,18 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+  color: black!important;
+  font-weight: bold;
+}
+
+table {
+  border-collapse: separate;
+}
+
+table td {
+  padding: 0 10px;
+}
+
+table th {
+  text-align: center;
 }
