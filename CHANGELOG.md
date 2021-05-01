@@ -1,5 +1,13 @@
 # Changelog
 
+## v1.2.0
+
+### Added
+
+- Added simple interpreter
+- Interpreter allows to declare a var
+- Added interpreter help
+
 ## v1.1.1
 
 ### Changed
