@@ -5,6 +5,7 @@ import { StackView } from './components/stackView';
 import { Container, Row, Col, Card, Navbar } from 'react-bootstrap';
 import { MemSym } from './memsym/memsym';
 import packageJson from '../package.json';
+import { HeapView } from './components/heapView';
 
 const memsym = new MemSym();
 
@@ -38,7 +39,19 @@ function App() {
                   Stack
                 </Card.Title>
                 <Card.Body>
-                  <StackView records={memsym.records} />
+                  <StackView />
+                </Card.Body>
+              </Card.Body>
+            </Card>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <Card>
+              <Card.Body>
+                <Card.Title>Heap</Card.Title>
+                <Card.Body>
+                  <HeapView />
                 </Card.Body>
               </Card.Body>
             </Card>
