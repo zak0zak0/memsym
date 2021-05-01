@@ -1,7 +1,7 @@
 import React from "react";
-import { Card, Tabs, Tab } from 'react-bootstrap';
+import { Card, Tabs, Tab, Badge } from 'react-bootstrap';
 import { RecordForm } from './form';
-import { Interpreter } from './interpreter';
+import { InterpreterView } from './interpreterView';
 
 export class InputCard extends React.Component {
     render() {
@@ -12,7 +12,7 @@ export class InputCard extends React.Component {
                         {this.renderForm()}
                     </Card>
                 </Tab>
-                <Tab eventKey="interpreter" title="Interpreter">
+                <Tab eventKey="interpreter" title={<span>Interpreter <Badge variant="danger">WIP</Badge></span>}>
                     <Card>
                         {this.renderInterpreter()}
                     </Card>
@@ -25,7 +25,7 @@ export class InputCard extends React.Component {
         return (
             <Card.Body>
                 <Card.Title>
-                    Declare variable
+                    Declare a variable
                 </Card.Title>
                 <RecordForm />
             </Card.Body>
@@ -36,7 +36,7 @@ export class InputCard extends React.Component {
         return (
             <Card.Body>
                 <Card.Title>Interpreter</Card.Title>
-                <Interpreter />
+                <InterpreterView />
             </Card.Body>
         )
     }
