@@ -1,5 +1,12 @@
 # Changelog
 
+## v1.1.0
+
+### Added
+
+- Added string type
+- Added heap view
+
 ## v1.0.5
 
 ### Changed

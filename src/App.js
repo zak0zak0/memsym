@@ -6,6 +6,7 @@ import { Container, Row, Col, Card, Navbar } from 'react-bootstrap';
 import { MemSym } from './memsym/memsym';
 import packageJson from '../package.json';
 import Logo from './logo_memsym.svg';
+import { HeapView } from './components/heapView';
 
 const memsym = new MemSym();
 
@@ -32,9 +33,7 @@ function App() {
                 <Card.Title>
                   Declare variable
                 </Card.Title>
-                <Card.Body>
-                  <RecordForm />
-                </Card.Body>
+                <RecordForm />
               </Card.Body>
             </Card>
           </Col>
@@ -44,9 +43,18 @@ function App() {
                 <Card.Title>
                   Stack
                 </Card.Title>
-                <Card.Body>
-                  <StackView records={memsym.records} />
-                </Card.Body>
+                <StackView />
+              </Card.Body>
+            </Card>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <Card>
+              <Card.Body>
+                <Card.Title>Heap</Card.Title>
+                <Card.Text>hover over a cell to see the value</Card.Text>
+                <HeapView />
               </Card.Body>
             </Card>
           </Col>
