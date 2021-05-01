@@ -1,5 +1,11 @@
 # Changelog
 
+## v1.0.5
+
+### Changed
+
+- Updated manifest icons
+
 ## v1.0.4
 
 ### Added
