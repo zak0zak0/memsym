@@ -29,7 +29,7 @@ export class Stack {
             index++;
         }
         if (!found) {
-            records.push(records);
+            records.push(record);
         } else {
             records[index] = record;
         }
