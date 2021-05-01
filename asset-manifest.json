@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/memsym/static/css/main.d8b56ac8.chunk.css",
-    "main.js": "/memsym/static/js/main.2dd6ced2.chunk.js",
-    "main.js.map": "/memsym/static/js/main.2dd6ced2.chunk.js.map",
+    "main.js": "/memsym/static/js/main.f81835fb.chunk.js",
+    "main.js.map": "/memsym/static/js/main.f81835fb.chunk.js.map",
     "runtime-main.js": "/memsym/static/js/runtime-main.a4f3c6e1.js",
     "runtime-main.js.map": "/memsym/static/js/runtime-main.a4f3c6e1.js.map",
     "static/css/2.92200efa.chunk.css": "/memsym/static/css/2.92200efa.chunk.css",
@@ -20,6 +20,6 @@
     "static/css/2.92200efa.chunk.css",
     "static/js/2.84e895fb.chunk.js",
     "static/css/main.d8b56ac8.chunk.css",
-    "static/js/main.2dd6ced2.chunk.js"
+    "static/js/main.f81835fb.chunk.js"
   ]
 }
