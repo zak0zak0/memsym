@@ -2,21 +2,8 @@ import { useState, useContext } from "react"
 import { Form, Button, FormGroup } from "react-bootstrap";
 import { DataType } from "../memsym/data-type";
 import { MemContext } from "./memcontext";
+import { useFeedback } from '../memsym/utils';
 
-function useFeedback() {
-  const [valid, setValid] = useState(true);
-  const [message, setMessage] = useState('');
-  const setError = message => {
-    setValid(!message);
-    setMessage(message);
-  };
-
-  return {
-    valid,
-    message,
-    setError
-  }
-}
 
 function checkIfNameExists(memsym, name) {
   return !!memsym.records.find(x => x.label === name);
