@@ -5,6 +5,7 @@ import { StackView } from './components/stackView';
 import { Container, Row, Col, Card, Navbar } from 'react-bootstrap';
 import { MemSym } from './memsym/memsym';
 import packageJson from '../package.json';
+import Logo from './logo_memsym.svg';
 
 const memsym = new MemSym();
 
@@ -13,7 +14,13 @@ function App() {
     <MemProvider memsym={memsym}>
       <Container>
         <Navbar bg="dark" variant="dark">
-          <Navbar.Brand>MemSym</Navbar.Brand>
+          <Navbar.Brand><img
+            alt=""
+            src={Logo}
+            width="30"
+            height="30"
+            className="d-inline-block align-top"
+          />{' '} MemSym</Navbar.Brand>
           <Navbar.Text>
             v{packageJson.version}
           </Navbar.Text>
