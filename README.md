@@ -2,4 +2,4 @@
 
 simple Stack and Heap simulation
 
-[demo](https://zak0zak0.github.io/memsym/index.html)
+[demo](https://zak0zak0.github.io/memsym/)
