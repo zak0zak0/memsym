@@ -1,5 +1,11 @@
 # Changelog
 
+## v1.2.1
+
+### Changed
+
+- Reduced the size of controls
+
 ## v1.2.0
 
 ### Added

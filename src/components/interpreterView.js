@@ -35,11 +35,11 @@ export function InterpreterView() {
         <Form>
             <FormGroup>
                 <Form.Label>Input a script and click the Run button</Form.Label>
-                <Form.Control as="textarea" rows={5} isInvalid={!textFb.valid} value={text} onChange={onTextChange} />
+                <Form.Control size="sm" as="textarea" rows={5} isInvalid={!textFb.valid} value={text} onChange={onTextChange} />
                 <Form.Control.Feedback type="invalid">{textFb.message}</Form.Control.Feedback>
             </FormGroup>
-            <Button variant="primary" type="button" onClick={onClick}>Run</Button> {' '}           
-            <Button variant="link" size="sm" type="button" onClick={handleShow}>Help</Button>
+            <Button size="sm" variant="primary" type="button" onClick={onClick}>Run</Button> {' '}           
+            <Button size="sm" variant="link" type="button" onClick={handleShow}>Help</Button>
             <InterpreterHelp show={show} handleClose={handleClose} />
         </Form>
     );

@@ -72,14 +72,14 @@ export const RecordForm = () => {
     <Form>
       <FormGroup>
         <Form.Label>Label</Form.Label>
-        <Form.Control value={name} onChange={e => setName(e.target.value)} name="name" type="text" placeholder="Label" isInvalid={!nameFb.valid} />
+        <Form.Control size="sm" value={name} onChange={e => setName(e.target.value)} name="name" type="text" placeholder="Label" isInvalid={!nameFb.valid} />
         <Form.Control.Feedback type="invalid">
           {nameFb.message}
         </Form.Control.Feedback>
       </FormGroup>
       <FormGroup>
         <Form.Label>Type</Form.Label>
-        <Form.Control as="select" name="type" value={type} onChange={(e => setType(e.target.value))}>
+        <Form.Control size="sm" as="select" name="type" value={type} onChange={(e => setType(e.target.value))}>
           <option value={DataType.INT}>int</option>
           <option value={DataType.CHAR}>char</option>
           <option value={DataType.BOOL}>bool</option>
@@ -89,14 +89,14 @@ export const RecordForm = () => {
       <FormGroup>
         <Form.Label>Value</Form.Label>
         {+type === DataType.BOOL && (
-          <Form.Control as="select" name="value" value={value} onChange={(e => setValue(e.target.value))}>
+          <Form.Control size="sm" as="select" name="value" value={value} onChange={(e => setValue(e.target.value))}>
             <option value="true">true</option>
             <option value="false">false</option>
           </Form.Control>)
         }
         {+type !== DataType.BOOL && (
           <>
-            <Form.Control value={value} onChange={e => setValue(e.target.value)} name="value" type="text" placeholder="Value" isInvalid={!valueFb.valid} />
+            <Form.Control size="sm" value={value} onChange={e => setValue(e.target.value)} name="value" type="text" placeholder="Value" isInvalid={!valueFb.valid} />
             <Form.Control.Feedback type="invalid">
               {valueFb.message}
             </Form.Control.Feedback>
@@ -105,7 +105,7 @@ export const RecordForm = () => {
       </FormGroup>
 
 
-      <Button variant="primary" type="button" onClick={onClick}>
+      <Button size="sm" variant="primary" type="button" onClick={onClick}>
         Declare
       </Button>
     </Form>

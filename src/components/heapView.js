@@ -18,7 +18,7 @@ export class HeapView extends React.Component {
         const rows = this.to2DimArray(heapData, rowsCount, colsCount);
         const header = Array.from(Array(colsCount).keys()).map(x => x.toString(2).padStart(3, '0'));
         return (
-            <Table bordered>
+            <Table bordered size="sm">
                 <thead>
                     <tr>
                         <th>#/#</th>
