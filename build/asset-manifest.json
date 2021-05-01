@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/static/css/main.16cef7be.chunk.css",
-    "main.js": "/static/js/main.950cb295.chunk.js",
-    "main.js.map": "/static/js/main.950cb295.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.617d5f1f.js",
-    "runtime-main.js.map": "/static/js/runtime-main.617d5f1f.js.map",
-    "static/css/2.1a02f21c.chunk.css": "/static/css/2.1a02f21c.chunk.css",
-    "static/js/2.2c08e2e4.chunk.js": "/static/js/2.2c08e2e4.chunk.js",
-    "static/js/2.2c08e2e4.chunk.js.map": "/static/js/2.2c08e2e4.chunk.js.map",
-    "static/js/3.e3eacee8.chunk.js": "/static/js/3.e3eacee8.chunk.js",
-    "static/js/3.e3eacee8.chunk.js.map": "/static/js/3.e3eacee8.chunk.js.map",
-    "index.html": "/index.html",
-    "static/css/2.1a02f21c.chunk.css.map": "/static/css/2.1a02f21c.chunk.css.map",
-    "static/css/main.16cef7be.chunk.css.map": "/static/css/main.16cef7be.chunk.css.map",
-    "static/js/2.2c08e2e4.chunk.js.LICENSE.txt": "/static/js/2.2c08e2e4.chunk.js.LICENSE.txt"
+    "main.css": "/memsym/static/css/main.d8b56ac8.chunk.css",
+    "main.js": "/memsym/static/js/main.739815db.chunk.js",
+    "main.js.map": "/memsym/static/js/main.739815db.chunk.js.map",
+    "runtime-main.js": "/memsym/static/js/runtime-main.a4f3c6e1.js",
+    "runtime-main.js.map": "/memsym/static/js/runtime-main.a4f3c6e1.js.map",
+    "static/css/2.92200efa.chunk.css": "/memsym/static/css/2.92200efa.chunk.css",
+    "static/js/2.84e895fb.chunk.js": "/memsym/static/js/2.84e895fb.chunk.js",
+    "static/js/2.84e895fb.chunk.js.map": "/memsym/static/js/2.84e895fb.chunk.js.map",
+    "static/js/3.92a360e4.chunk.js": "/memsym/static/js/3.92a360e4.chunk.js",
+    "static/js/3.92a360e4.chunk.js.map": "/memsym/static/js/3.92a360e4.chunk.js.map",
+    "index.html": "/memsym/index.html",
+    "static/css/2.92200efa.chunk.css.map": "/memsym/static/css/2.92200efa.chunk.css.map",
+    "static/css/main.d8b56ac8.chunk.css.map": "/memsym/static/css/main.d8b56ac8.chunk.css.map",
+    "static/js/2.84e895fb.chunk.js.LICENSE.txt": "/memsym/static/js/2.84e895fb.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.617d5f1f.js",
-    "static/css/2.1a02f21c.chunk.css",
-    "static/js/2.2c08e2e4.chunk.js",
-    "static/css/main.16cef7be.chunk.css",
-    "static/js/main.950cb295.chunk.js"
+    "static/js/runtime-main.a4f3c6e1.js",
+    "static/css/2.92200efa.chunk.css",
+    "static/js/2.84e895fb.chunk.js",
+    "static/css/main.d8b56ac8.chunk.css",
+    "static/js/main.739815db.chunk.js"
   ]
 }

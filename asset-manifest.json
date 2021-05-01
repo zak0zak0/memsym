@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/memsym/static/css/main.fd236b0f.chunk.css",
-    "main.js": "/memsym/static/js/main.1ecb877f.chunk.js",
-    "main.js.map": "/memsym/static/js/main.1ecb877f.chunk.js.map",
+    "main.css": "/memsym/static/css/main.d8b56ac8.chunk.css",
+    "main.js": "/memsym/static/js/main.739815db.chunk.js",
+    "main.js.map": "/memsym/static/js/main.739815db.chunk.js.map",
     "runtime-main.js": "/memsym/static/js/runtime-main.a4f3c6e1.js",
     "runtime-main.js.map": "/memsym/static/js/runtime-main.a4f3c6e1.js.map",
     "static/css/2.92200efa.chunk.css": "/memsym/static/css/2.92200efa.chunk.css",
@@ -12,14 +12,14 @@
     "static/js/3.92a360e4.chunk.js.map": "/memsym/static/js/3.92a360e4.chunk.js.map",
     "index.html": "/memsym/index.html",
     "static/css/2.92200efa.chunk.css.map": "/memsym/static/css/2.92200efa.chunk.css.map",
-    "static/css/main.fd236b0f.chunk.css.map": "/memsym/static/css/main.fd236b0f.chunk.css.map",
+    "static/css/main.d8b56ac8.chunk.css.map": "/memsym/static/css/main.d8b56ac8.chunk.css.map",
     "static/js/2.84e895fb.chunk.js.LICENSE.txt": "/memsym/static/js/2.84e895fb.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.a4f3c6e1.js",
     "static/css/2.92200efa.chunk.css",
     "static/js/2.84e895fb.chunk.js",
-    "static/css/main.fd236b0f.chunk.css",
-    "static/js/main.1ecb877f.chunk.js"
+    "static/css/main.d8b56ac8.chunk.css",
+    "static/js/main.739815db.chunk.js"
   ]
 }
