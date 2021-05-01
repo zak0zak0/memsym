@@ -1,5 +1,11 @@
 # Changelog
 
+## v1.1.1
+
+### Changed
+
+- Add validation for a numeric value on INT input 
+
 ## v1.1.0
 
 ### Added
