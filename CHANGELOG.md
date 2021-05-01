@@ -1,5 +1,11 @@
 # Changelog
 
+## v1.0.4
+
+### Added
+
+- Added Logo to navbar
+
 ## v1.0.3
 
 ### Changed

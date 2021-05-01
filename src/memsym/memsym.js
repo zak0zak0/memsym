@@ -10,7 +10,7 @@ export class MemSym {
     }
 
     declare(dataType, label, value) {
-        if (+dataType == DataType.CHAR) {
+        if (+dataType === DataType.CHAR) {
             value = value[0];
         }
 
