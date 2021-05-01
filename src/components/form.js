@@ -95,7 +95,7 @@ export const RecordForm = () => {
           <option value={DataType.INT}>int</option>
           <option value={DataType.CHAR}>char</option>
           <option value={DataType.BOOL}>bool</option>
-          {/* <option value={DataType.STRING}>string</option> */}
+          <option value={DataType.STRING}>string</option>
         </Form.Control>
       </FormGroup>
       <FormGroup>
