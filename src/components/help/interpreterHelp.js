@@ -10,7 +10,7 @@ export function InterpreterHelp({ show, handleClose }) {
     const [page, setPage] = useState(1);
 
     return (
-        <Modal show={show} onHide={handleClose}>
+        <Modal show={show} onHide={handleClose} size="sm">
             <Modal.Header closeButton>
                 <Modal.Title>Interpreter Help</Modal.Title>
             </Modal.Header>
@@ -19,7 +19,7 @@ export function InterpreterHelp({ show, handleClose }) {
             </Modal.Body>
             <Modal.Footer className="justify-content-between">
                 <Paginator active={page} onChange={x => setPage(x)} amount={helpPages.length} />
-                <Button variant="secondary" onClick={handleClose}>
+                <Button size="sm" variant="secondary" onClick={handleClose}>
                     Close
                 </Button>
             </Modal.Footer>
@@ -37,7 +37,7 @@ function Paginator({ active, onChange, amount }) {
         );
     }
     return (
-        <Pagination>
+        <Pagination size="sm">
             {items}
         </Pagination>
     )

@@ -15,7 +15,7 @@ export class StackView extends React.Component {
 
     renderBody = ({ records }) => {
         return (
-            <Table bordered>
+            <Table bordered size="sm">
                 <thead>
                     <tr>
                         <th>#</th>
