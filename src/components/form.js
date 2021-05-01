@@ -62,8 +62,8 @@ export const RecordForm = () => {
       valueFb.setError('Value is required');
       valueIsOk = false;
     }
-    if (valueIsOk && +type === DataType.INT && (actual < -128 || actual > 127)) {
-      valueFb.setError('Value must be in range [-128; 127]');
+    if (valueIsOk && +type === DataType.INT && ((!actual.match(/^-?\d+$/)) || (actual < -128 || actual > 127))) {
+      valueFb.setError('Value must be a number in range [-128; 127]');
       valueIsOk = false;
     }
     if (valueIsOk && +type === DataType.CHAR && actual.length > 1) {
