@@ -13,6 +13,11 @@ export class MemSym {
         this.#heap = new Heap();
     }
 
+    clear() {
+        this.#stack.clear();
+        this.#heap.clear();
+    }
+
     declare(dataType, label, value) {
         if (+dataType === DataType.CHAR) {
             value = value[0];

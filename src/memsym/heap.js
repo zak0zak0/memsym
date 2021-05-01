@@ -4,7 +4,15 @@ export class Heap {
 
     constructor(size = 64) {
         this.size = size;
-        this.#memory = Array(size).fill(0);
+        this.initialize();
+    }
+
+    initialize() {
+        this.#memory = Array(this.size).fill(0);
+    }
+
+    clear() {
+        this.initialize();
     }
 
     get data() {
