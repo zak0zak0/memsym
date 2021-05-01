@@ -14,6 +14,21 @@ test('Heap can write value to an empty memory', () => {
     expect(data).toEqual(['a', 'b', 'c', 0, 0, 0, 0, 0, 0, 0]);
 });
 
+test('Heap returns index of stored value', () => {
+    const heap = new Heap(5);
+    const value = 'abc';
+    const index = heap.alloc(value);
+    expect(index).toEqual(0);
+});
+
+test('Heap returns index of stored value even if value is not first', () => {
+    const heap = new Heap(10);
+    const value = 'abc';
+    heap.alloc(value);
+    const index = heap.alloc(value);
+    expect(index).toEqual(4);
+});
+
 test('Heap can add another value after one empty cell', () => {
     const heap = new Heap(10);
     const firstValue = 'abc';
@@ -67,4 +82,28 @@ test('Heap.alloc returns -1 if there is not enough empty memory after multiple s
     const data = heap.data;
     expect(result).toEqual(-1);    
     expect(data).toEqual(['a', 'b', 'c', 0, 'd', 'e', 'f', 0, 0, 0]);
+});
+
+test('Heap can read first value', () => {
+    const heap = new Heap(5);
+    const value = 'abc';
+    const index = heap.alloc(value);
+    const actualValue = heap.read(index);
+    expect(actualValue).toEqual(value);
+});
+
+test('Heap can read second value', () => {
+    const heap = new Heap(10);
+    const firstValue = 'abc';
+    const secondValue = 'def';
+    heap.alloc(firstValue);
+    const index = heap.alloc(secondValue);
+    const actualValue = heap.read(index);
+    expect(actualValue).toEqual(secondValue);
+});
+
+test('Heap.read returns dot on empty cell', () => {
+    const heap = new Heap(5);
+    const value = heap.read(0);
+    expect(value).toEqual('.');
 });

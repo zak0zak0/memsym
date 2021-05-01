@@ -11,6 +11,23 @@ export class Heap {
         return [...this.#memory];
     }
 
+    read(index) {
+        const mem = this.#memory;
+        if (index >= mem.length) {
+            return '';
+        }
+        if (mem[index] === 0) {
+            return '.';
+        }
+        const result = [];        
+        let i = 0;
+        while (i + index < mem.length && mem[i + index] !== 0) {
+            result[i] = mem[i + index];
+            i++;
+        }
+        return result.join('');
+    }
+
     alloc(value) {
         if (typeof value !== "string") {
             alert('Unable to allocate non-string value');
