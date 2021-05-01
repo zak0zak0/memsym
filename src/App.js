@@ -1,30 +1,51 @@
-import { Heap, Stack } from './components/stack';
 import './App.css';
-import Memory, { Record } from './stack/memory';
-import { type } from './stack/display';
-import { MemProvider } from './components/memprovider';
+import { MemProvider } from './components/memcontext';
 import { RecordForm } from './components/form';
-import { Row } from 'react-bootstrap';
+import { StackView } from './components/stackView';
+import { Container, Row, Col, Card, Navbar } from 'react-bootstrap';
+import { MemSym } from './memsym/memsym';
+import packageJson from '../package.json';
 
-const memory = new Memory();
-// memory.declareVariable(new Record('a', type.UINT, 5));
-// memory.declareVariable(new Record('b', type.INT, -5));
-// memory.declareVariable(new Record('c', type.BOOL, true));
-// memory.declareVariable(new Record('d', type.STRING, 'abc'));
-// memory.declareVariable(new Record('e', type.STRING, 'def'));
-
+const memsym = new MemSym();
 
 function App() {
   return (
-    <div>
-      <MemProvider memory={memory}>
-        <RecordForm />
+    <MemProvider memsym={memsym}>
+      <Container>
+        <Navbar bg="dark" variant="dark">
+          <Navbar.Brand>MemSym</Navbar.Brand>
+          <Navbar.Text>
+            v{packageJson.version}
+          </Navbar.Text>
+        </Navbar>
         <Row>
-          <Stack />
-          <Heap />
+          <Col xs="12" sm="6" md="4" lg="3">
+            <Card>
+              <Card.Body>
+                <Card.Title>
+                  Declare variable
+                </Card.Title>
+                <Card.Body>
+                  <RecordForm />
+                </Card.Body>
+              </Card.Body>
+            </Card>
+          </Col>
+          <Col xs="12" sm="12" md="8" lg="5">
+            <Card>
+              <Card.Body>
+                <Card.Title>
+                  Stack
+                </Card.Title>
+                <Card.Body>
+                  <StackView records={memsym.records} />
+                </Card.Body>
+              </Card.Body>
+            </Card>
+          </Col>
         </Row>
-      </MemProvider>
-    </div>
+      </Container>
+    </MemProvider>
   );
 }
 

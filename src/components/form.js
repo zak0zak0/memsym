@@ -1,59 +1,125 @@
-import { useState, useContext, useEffect } from "react"
-import { Form, Button, Col } from "react-bootstrap";
-import { MemContext } from "../memory-context";
-import { Record } from '../stack/memory';
-import { type as Type } from "../stack/display";
+import { useState, useContext } from "react"
+import { Form, Button, FormGroup } from "react-bootstrap";
+import { DataType } from "../memsym/data-type";
+import { MemContext } from "./memcontext";
+
+function useFeedback() {
+  const [valid, setValid] = useState(true);
+  const [message, setMessage] = useState('');
+  const setError = message => {
+    setValid(!message);
+    setMessage(message);
+  };
+
+  return {
+    valid,
+    message,
+    setError
+  }
+}
+
+function checkIfNameExists(memsym, name) {
+  return !!memsym.records.find(x => x.label === name);
+}
 
 export const RecordForm = () => {
   const [name, setName] = useState('');
-  const [type, setType] = useState(Type.INT);
+  const [type, setType] = useState(DataType.INT);
   const [value, setValue] = useState(0);
 
-  useEffect(() => {
-    if (+type === Type.BOOL) {
-      setValue('true');
-    }
-  }, [type]);
+  const { memsym, onUpdate } = useContext(MemContext);
 
-  const memory = useContext(MemContext);
+  const nameFb = useFeedback();
+  const valueFb = useFeedback();
 
   const onClick = () => {
-    const actValue = +type === Type.BOOL ? !!value : value;
-    memory.declareVariable(new Record(name, +type, actValue));
+    let actual = value;
+    if (+type === DataType.BOOL && !(value === "true" || value === "false")) {
+      actual = "true";
+    }
+
+    let nameIsOk = true;
+    if (!name) {
+      nameFb.setError('Label is required');
+      nameIsOk = false;
+    }
+    if (nameIsOk && checkIfNameExists(memsym, name)) {
+      nameFb.setError('Label is already defined');
+      nameIsOk = false;
+    }
+    if (nameIsOk && !name.match(/^[_a-zA-Z][_a-zA-Z0-9]*$/)) {
+      nameFb.setError("Label must start with '_' or letter (a-z, A-Z) and be following by '_' or letters (a-z, A-Z) or numbers (0-9)");
+      nameIsOk = false;
+    }
+    if (nameIsOk) {
+      nameFb.setError('');
+    } else {
+      return;
+    }
+
+    let valueIsOk = true;
+    if (actual !== 0 && !actual) {
+      valueFb.setError('Value is required');
+      valueIsOk = false;
+    }
+    if (valueIsOk && +type === DataType.INT && (actual < -128 || actual > 127)) {
+      valueFb.setError('Value must be in range [-128; 127]');
+      valueIsOk = false;
+    }
+    if (valueIsOk && +type === DataType.CHAR && actual.length > 1) {
+      valueFb.setError('Value must be only 1 character long');
+      valueIsOk = false;
+    }
+    if (valueIsOk) {
+      valueFb.setError('');
+    } else {
+      return;
+    }
+
+    memsym.declare(type, name, actual);
+    onUpdate();
   }
 
   return (
-    <Form style={{ maxWidth: '800px', marginBottom: '30px' }}>
-      <Form.Row>
-        <Col>
-          <Button variant="primary" type="button" onClick={onClick}>
-            DeclareVariable
-          </Button>
-        </Col>
-        <Col>
-          <Form.Control value={name} onChange={e => setName(e.target.value)} name="name" type="text" placeholder="Name" />
-        </Col>
-        <Col>
-          <Form.Control as="select" name="type" value={type} onChange={(e => setType(e.target.value))}>
-            <option value={Type.INT}>int</option>
-            <option value={Type.UINT}>uint</option>
-            <option value={Type.BOOL}>bool</option>
-            <option value={Type.STRING}>string</option>
-          </Form.Control>
-        </Col>
-        <Col>
-          {+type === Type.BOOL && (
-            <Form.Control as="select" name="value" value={value} onChange={(e => setValue(e.target.value))}>
-              <option value="true">true</option>
-              <option value="false">false</option>
-            </Form.Control>)
-          }
-          {+type !== Type.BOOL && (
-            <Form.Control value={value} onChange={e => setValue(e.target.value)} name="value" type="text" placeholder="Value" />
-          )}          
-        </Col>
-      </Form.Row>
+    <Form>
+      <FormGroup>
+        <Form.Label>Label</Form.Label>
+        <Form.Control value={name} onChange={e => setName(e.target.value)} name="name" type="text" placeholder="Label" isInvalid={!nameFb.valid} />
+        <Form.Control.Feedback type="invalid">
+          {nameFb.message}
+        </Form.Control.Feedback>
+      </FormGroup>
+      <FormGroup>
+        <Form.Label>Type</Form.Label>
+        <Form.Control as="select" name="type" value={type} onChange={(e => setType(e.target.value))}>
+          <option value={DataType.INT}>int</option>
+          <option value={DataType.CHAR}>char</option>
+          <option value={DataType.BOOL}>bool</option>
+          {/* <option value={DataType.STRING}>string</option> */}
+        </Form.Control>
+      </FormGroup>
+      <FormGroup>
+        <Form.Label>Value</Form.Label>
+        {+type === DataType.BOOL && (
+          <Form.Control as="select" name="value" value={value} onChange={(e => setValue(e.target.value))}>
+            <option value="true">true</option>
+            <option value="false">false</option>
+          </Form.Control>)
+        }
+        {+type !== DataType.BOOL && (
+          <>
+            <Form.Control value={value} onChange={e => setValue(e.target.value)} name="value" type="text" placeholder="Value" isInvalid={!valueFb.valid} />
+            <Form.Control.Feedback type="invalid">
+              {valueFb.message}
+            </Form.Control.Feedback>
+          </>
+        )}
+      </FormGroup>
 
+
+      <Button variant="primary" type="button" onClick={onClick}>
+        Declare
+      </Button>
     </Form>
   )
 }
