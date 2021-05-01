@@ -29,13 +29,23 @@ export class HeapView extends React.Component {
                     {rows.map((r, i) => (
                         <tr key={i}>
                             {r.map((c, i) => (
-                                <td key={i} className={i === 0 ? "bold" : ""}>{c.toString(2).padStart(i === 0 ? 3: 8, '0')}</td>
+                                <td key={i} className={i === 0 ? "bold" : ""}>{this.renderCellValue(c, i)}</td>
                             ))}
                         </tr>
                     ))}
                 </tbody>
             </Table>
         )
+    }
+
+    renderCellValue(value, index) {
+        if (index === 0) {
+            return value.toString(2).padStart(3, '0');
+        }
+        if (typeof value === 'string') {
+            value = value.charCodeAt(0);
+        }
+        return value.toString(2).padStart(8, '0');
     }
 
     to2DimArray(data, rowsCount, colsCount) {
