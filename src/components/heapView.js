@@ -1,5 +1,5 @@
 import React from "react";
-import { Table } from "react-bootstrap";
+import { Table, OverlayTrigger, Tooltip } from "react-bootstrap";
 import { MemContext } from './memcontext';
 
 const colsCount = 8;
@@ -21,20 +21,33 @@ export class HeapView extends React.Component {
             <Table bordered>
                 <thead>
                     <tr>
-                        <th>#/#</th>   
-                        {header.map(x => (<th key={x}>{x}</th>))}                     
+                        <th>#/#</th>
+                        {header.map(x => (<th key={x}>{x}</th>))}
                     </tr>
                 </thead>
                 <tbody>
                     {rows.map((r, i) => (
                         <tr key={i}>
-                            {r.map((c, i) => (
-                                <td key={i} className={i === 0 ? "bold" : ""}>{this.renderCellValue(c, i)}</td>
-                            ))}
+                            {r.map((c, i) => this.renderCell(c, i))}
                         </tr>
                     ))}
                 </tbody>
             </Table>
+        )
+    }
+
+    renderCell(value, index) {
+        if (index === 0) {
+            return (
+                <td key={index} className="bold">{this.renderCellValue(value, index)}</td>
+            )
+        }
+        const tooltipValue = typeof value === 'string' ? `'${value}'` : value;
+
+        return (
+            <OverlayTrigger overlay={<Tooltip>{tooltipValue}</Tooltip>}>
+                <td key={index} >{this.renderCellValue(value, index)}</td>
+            </OverlayTrigger>
         )
     }
 
@@ -53,7 +66,7 @@ export class HeapView extends React.Component {
         for (let row = 0; row < rowsCount; row++) {
             const cols = [];
             cols.push(row);
-            for (let col = 0; col < colsCount; col++) {                
+            for (let col = 0; col < colsCount; col++) {
                 const item = data[row * colsCount + col];
                 cols.push(item);
             }

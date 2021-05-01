@@ -26,9 +26,7 @@ function App() {
                 <Card.Title>
                   Declare variable
                 </Card.Title>
-                <Card.Body>
-                  <RecordForm />
-                </Card.Body>
+                <RecordForm />
               </Card.Body>
             </Card>
           </Col>
@@ -38,9 +36,7 @@ function App() {
                 <Card.Title>
                   Stack
                 </Card.Title>
-                <Card.Body>
-                  <StackView />
-                </Card.Body>
+                <StackView />
               </Card.Body>
             </Card>
           </Col>
@@ -50,9 +46,8 @@ function App() {
             <Card>
               <Card.Body>
                 <Card.Title>Heap</Card.Title>
-                <Card.Body>
-                  <HeapView />
-                </Card.Body>
+                <Card.Text>hover over a cell to see the value</Card.Text>
+                <HeapView />
               </Card.Body>
             </Card>
           </Col>

@@ -9,7 +9,7 @@ export class MemSym {
     #heap;
 
     constructor() {
-        this.#stack = new Stack();        
+        this.#stack = new Stack();
         this.#heap = new Heap();
     }
 
