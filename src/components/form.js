@@ -2,21 +2,9 @@ import { useState, useContext } from "react"
 import { Form, Button, FormGroup } from "react-bootstrap";
 import { DataType } from "../memsym/data-type";
 import { MemContext } from "./memcontext";
+import { useFeedback } from '../memsym/utils';
+import {nameRegexString} from '../memsym/constants';
 
-function useFeedback() {
-  const [valid, setValid] = useState(true);
-  const [message, setMessage] = useState('');
-  const setError = message => {
-    setValid(!message);
-    setMessage(message);
-  };
-
-  return {
-    valid,
-    message,
-    setError
-  }
-}
 
 function checkIfNameExists(memsym, name) {
   return !!memsym.records.find(x => x.label === name);
@@ -47,7 +35,7 @@ export const RecordForm = () => {
       nameFb.setError('Label is already defined');
       nameIsOk = false;
     }
-    if (nameIsOk && !name.match(/^[_a-zA-Z][_a-zA-Z0-9]*$/)) {
+    if (nameIsOk && !name.match(new RegExp(`^${nameRegexString}$`))) {
       nameFb.setError("Label must start with '_' or letter (a-z, A-Z) and be following by '_' or letters (a-z, A-Z) or numbers (0-9)");
       nameIsOk = false;
     }

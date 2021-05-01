@@ -1,6 +1,6 @@
 import './App.css';
 import { MemProvider } from './components/memcontext';
-import { RecordForm } from './components/form';
+import { InputCard } from './components/inputCard';
 import { StackView } from './components/stackView';
 import { Container, Row, Col, Card, Navbar } from 'react-bootstrap';
 import { MemSym } from './memsym/memsym';
@@ -28,14 +28,7 @@ function App() {
         </Navbar>
         <Row>
           <Col xs="12" sm="6" md="4" lg="3">
-            <Card>
-              <Card.Body>
-                <Card.Title>
-                  Declare variable
-                </Card.Title>
-                <RecordForm />
-              </Card.Body>
-            </Card>
+            <InputCard />
           </Col>
           <Col xs="12" sm="12" md="8" lg="5">
             <Card>
