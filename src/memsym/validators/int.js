@@ -10,12 +10,12 @@ export class IntValidator extends BaseValueValidator {
         if (typeof value !== 'string') {
             value = value.toString();
         }
-        if (/^-?\d+$/.test(value)) {
+        if (!/^-?\d+$/.test(value)) {
             return "Value must be an integer number";
         }
         value = +value;
         if (value < minInt || value > maxInt) {
-            return `Value must be integer in range [${minInt}, ${maxInt}]`;
+            return `Value must be an integer in range [${minInt}, ${maxInt}]`;
         }
         return null;
     }

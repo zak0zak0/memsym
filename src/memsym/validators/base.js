@@ -1,10 +1,6 @@
-import {nameRegexString} from '../constants';
-
-const nameRegex = new RegExp(`^${nameRegexString}$`);
-
 export class BaseValueValidator {
     constructor(memsym) {
-        this.#memsym = memsym;
+        this.memsym = memsym;
     }
 
     value(value) {

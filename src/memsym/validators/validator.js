@@ -4,10 +4,15 @@ import { CharValidator } from "./char";
 import { IntValidator } from "./int";
 import { StringValidator } from "./string";
 
+import {nameRegexString} from '../constants';
 
+const nameRegex = new RegExp(`^${nameRegexString}$`);
 
 export class Validator {
+    #memsym;
+
     constructor(memsym) {
+        this.#memsym = memsym;
         this.map = {
             [DataType.INT]: new IntValidator(memsym),
             [DataType.CHAR]: new CharValidator(memsym),
@@ -16,7 +21,7 @@ export class Validator {
         }
     }
 
-    validateLabel(label) {
+    name(label) {
         if (!label) {
             return 'Label is required';
         }
@@ -29,12 +34,12 @@ export class Validator {
         return "Wrong label";
     }
 
-    validateValue(dataType, value) {
+    value(dataType, value) {
         const validator = this.map[dataType];
         if (!validator) {
             alert(`Unknown validator dataType ${dataType}`);
-            throw Error(`Unknown validator dataType ${dataType}`);
+            return '';
         }
-        return alidator.value(value);
+        return validator.value(value);
     }
 }
