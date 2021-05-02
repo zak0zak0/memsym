@@ -1,5 +1,6 @@
 import { DataType } from "./data-type";
 import { nameRegexString } from './constants';
+import { parseDataType } from "./utils";
 
 const dataTypes = Object.entries(DataType).filter(([,v]) => v !== DataType.NULL).map(([k,v]) => k).join('|');
 const declareRegex = new RegExp(`^\\s*(${dataTypes})\\s+${nameRegexString}\\s(.*)$`, "i");
@@ -38,8 +39,8 @@ export class Interpreter {
         i = this.skipSpaces(line, i);
         [i, value] = this.readValue(line, i);
         
-        const dataTypeKey = Object.keys(DataType).find(x => x.toLowerCase() === typeName.toLowerCase());
-        this.memsym.declare(DataType[dataTypeKey], varName, value);
+        const dataType = parseDataType(typeName);
+        this.memsym.declare(dataType, varName, value);
     }
 
     readToken(line, index) {
