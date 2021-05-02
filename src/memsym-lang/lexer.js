@@ -39,9 +39,9 @@ export class Lexer {
             }
             if (char === minus) {
                 i++;
-                char = line[i];
-                if (!digitRegex.test(char)) {
-                    throw new LexerError(char, i);
+                const nextChar = line[i];
+                if (!digitRegex.test(nextChar)) {
+                    throw new LexerError(nextChar, i);
                 }
                 const [index, number] = this.readNumber(line, i);
                 tokens.push(new Token(tt.NUMBER, -number));
