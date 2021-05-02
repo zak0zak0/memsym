@@ -1,5 +1,5 @@
 {
-  "name": "mem-sim",
+  "name": "memsym",
   "version": "1.2.1",
   "private": true,
   "dependencies": {
