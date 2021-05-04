@@ -1,5 +1,16 @@
 # Changelog
 
+## v1.3.0
+
+### Added
+
+- Added new interpreter
+- Added new help page with types
+
+### Changed
+
+- Removed forms declaration
+
 ## v1.2.1
 
 ### Changed
