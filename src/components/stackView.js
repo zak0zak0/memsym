@@ -1,8 +1,8 @@
 import React from "react";
 import { Table } from "react-bootstrap";
-import { DataType } from "../memsym/data-type";
+import { DataType } from "../common/data-type";
 import { MemContext } from "./memcontext";
-import { toByteString } from '../memsym/utils';
+import { toByteString } from '../common/utils';
 
 export class StackView extends React.Component {
     render() {

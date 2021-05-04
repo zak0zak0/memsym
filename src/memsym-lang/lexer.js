@@ -39,9 +39,9 @@ export class Lexer {
             }
             if (char === minus) {
                 i++;
-                char = line[i];
-                if (!digitRegex.test(char)) {
-                    throw new LexerError(char, i);
+                const nextChar = line[i];
+                if (!digitRegex.test(nextChar)) {
+                    throw new LexerError(nextChar, i);
                 }
                 const [index, number] = this.readNumber(line, i);
                 tokens.push(new Token(tt.NUMBER, -number));
@@ -92,7 +92,7 @@ export class Lexer {
         if (i >= line.length || line[i] !== doubleQuote) {
             throw new LexerError(line[i], i);
         }
-        return [i, result];
+        return [i + 1, result];
     }
 
     readChar(line, i) {
@@ -101,7 +101,7 @@ export class Lexer {
         }
         const symbol = line[i + 1];
         if (i + 2 >= line.length) {
-            throw new LexerError(char, i);
+            throw new LexerError(symbol, i + 1);
         }
         if (line[i + 2] !== singleQuote) {
             throw new LexerError(line[i + 2], i + 2);
@@ -123,6 +123,11 @@ export class Lexer {
         while (i < line.length && digitRegex.test(line[i])) {
             result += line[i];
             i++;
+        }
+        if (i < line.length) {
+            if (nameCharRegex.test(line[i])) {
+                throw new LexerError(line[i], i);
+            }
         }
         return [i, +result];
     }

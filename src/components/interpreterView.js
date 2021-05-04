@@ -1,7 +1,7 @@
 import React, { useContext, useState, useRef } from "react";
 import { FormGroup, Button, Form } from 'react-bootstrap';
 import { Interpreter } from "../memsym/interpreter";
-import { useFeedback } from "../memsym/utils";
+import { useFeedback } from "../common/utils";
 import { InterpreterHelp } from './help/interpreterHelp';
 import { MemContext } from "./memcontext";
 
@@ -18,13 +18,13 @@ export function InterpreterView() {
 
     const onClick = () => {
         const lines = text.split('\n');
-        const message = interpreterRef.current.validate(lines);
-        textFb.setError(message);
-        if (message) {
-            return;
-        }
-        memsym.clear();
-        interpreterRef.current.run(lines);
+        const interpreter = interpreterRef.current;
+        try {
+            interpreter.run(lines);
+            textFb.setError(null);
+        } catch (e) {
+            textFb.setError(e.message);
+        }                
     }
 
     const onTextChange = e => {

@@ -1,4 +1,4 @@
-import { DataType } from "./data-type";
+import { DataType } from "../common/data-type";
 import { Record } from "./record";
 import { Stack } from "./stack";
 import { Heap } from "./heap";
@@ -33,8 +33,6 @@ export class MemSym {
         const record = new Record(+dataType, label, value);
 
         this.#stack.push(record);
-        console.log('var declared: ', record);
-        console.log(this.records);
     }
 
     get records() {

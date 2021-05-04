@@ -1,5 +1,7 @@
 import { tokenType } from "./token";
 import { DeclarationNode } from './nodes/declaration';
+import { DataType } from "../common/data-type";
+import { parseDataType } from '../common/utils';
 
 export class ParserError extends Error {
     constructor(token) {
@@ -8,7 +10,14 @@ export class ParserError extends Error {
     }
 }
 
-const declarationValueTokenTypes = [tokenType.NUMBER, tokenType.STRING, tokenType.CHAR, tokenType.BOOL];
+const tt = tokenType;
+
+const declarationTypeValueMap = {
+    [DataType.INT]: tt.NUMBER,
+    [DataType.CHAR]: tt.CHAR,
+    [DataType.STRING]: tt.STRING,
+    [DataType.BOOL]: tt.BOOL,
+};
 
 export class Parser {
     parse(tokens) {
@@ -25,14 +34,14 @@ export class Parser {
     parseDeclaration(tokens) {
         const type = tokens[0].value;        
         if (tokens[1]?.type !== tokenType.NAME) {
-            throw new ParserError(token[1]);
+            throw new ParserError(tokens[1]);
         }
         const name = tokens[1].value;
         if (tokens[2]?.type !== tokenType.EQUAL) {
-            throw new ParserError(token[2]);
+            throw new ParserError(tokens[2]);
         }
-        if (!declarationValueTokenTypes.includes(tokens[3].type)) {
-            throw new ParserError(token[3]);
+        if (declarationTypeValueMap[parseDataType(type)] !== tokens[3].type) {
+            throw new ParserError(tokens[3]);
         }
         const value = tokens[3].value;
         return new DeclarationNode(type, name, value);
