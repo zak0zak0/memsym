@@ -101,7 +101,7 @@ export class Lexer {
         }
         const symbol = line[i + 1];
         if (i + 2 >= line.length) {
-            throw new LexerError(char, i);
+            throw new LexerError(symbol, i + 1);
         }
         if (line[i + 2] !== singleQuote) {
             throw new LexerError(line[i + 2], i + 2);
