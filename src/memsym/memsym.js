@@ -1,4 +1,4 @@
-import { DataType } from "./data-type";
+import { DataType } from "../common/data-type";
 import { Record } from "./record";
 import { Stack } from "./stack";
 import { Heap } from "./heap";

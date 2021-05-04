@@ -1,4 +1,4 @@
-import { DataType } from "../data-type";
+import { DataType } from "../../common/data-type";
 import { BoolValidator } from "./bool";
 import { CharValidator } from "./char";
 import { IntValidator } from "./int";

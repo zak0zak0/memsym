@@ -1,8 +1,8 @@
 import { useState, useContext, useRef } from "react"
 import { Form, Button, FormGroup } from "react-bootstrap";
-import { DataType } from "../memsym/data-type";
+import { DataType } from "../common/data-type";
 import { MemContext } from "./memcontext";
-import { useFeedback } from '../memsym/utils';
+import { useFeedback } from '../common/utils';
 import { Validator } from '../memsym/validators/validator';
 
 export const RecordForm = () => {

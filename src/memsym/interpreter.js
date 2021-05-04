@@ -1,6 +1,6 @@
-import { DataType } from "./data-type";
+import { DataType } from "../common/data-type";
 import { nameRegexString } from './constants';
-import { parseDataType } from "./utils";
+import { parseDataType } from "../common/utils";
 
 const dataTypes = Object.entries(DataType).filter(([,v]) => v !== DataType.NULL).map(([k,v]) => k).join('|');
 const declareRegex = new RegExp(`^\\s*(${dataTypes})\\s+${nameRegexString}\\s(.*)$`, "i");
