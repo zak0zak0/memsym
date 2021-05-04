@@ -5,14 +5,14 @@ import { parseDataType } from '../common/utils';
 import { DataType } from '../common/data-type';
 
 export class Interpreter {
+    #names = [];
+
     constructor(memsym, onUpdate) {
         this.memsym = memsym;
         this.onUpdate = onUpdate;
         this.lexer = new Lexer();
         this.parser = new Parser();
     }
-
-    #names = [];
 
     run(lines) {
         const nodes = [];
