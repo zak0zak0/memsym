@@ -1,16 +1,17 @@
 import React, { useState } from 'react';
 import { Modal, Button, Pagination } from 'react-bootstrap';
 import { Declare } from './declare';
+import { Types } from './types';
 
 const helpPages = [
-    <Declare />
+    <Declare />, <Types />
 ]
 
 export function InterpreterHelp({ show, handleClose }) {
     const [page, setPage] = useState(1);
 
     return (
-        <Modal show={show} onHide={handleClose} size="sm">
+        <Modal show={show} onHide={handleClose} >
             <Modal.Header closeButton>
                 <Modal.Title>Interpreter Help</Modal.Title>
             </Modal.Header>
