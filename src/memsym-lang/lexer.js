@@ -92,7 +92,7 @@ export class Lexer {
         if (i >= line.length || line[i] !== doubleQuote) {
             throw new LexerError(line[i], i);
         }
-        return [i, result];
+        return [i + 1, result];
     }
 
     readChar(line, i) {
@@ -123,6 +123,11 @@ export class Lexer {
         while (i < line.length && digitRegex.test(line[i])) {
             result += line[i];
             i++;
+        }
+        if (i < line.length) {
+            if (nameCharRegex.test(line[i])) {
+                throw new LexerError(line[i], i);
+            }
         }
         return [i, +result];
     }

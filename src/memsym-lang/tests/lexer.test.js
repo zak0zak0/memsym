@@ -39,21 +39,21 @@ it('parses string without whitespaces', () => {
     const lexer = new Lexer();
     const line = '"JavaScript"';
     const actual = lexer.parse(line);
-    expect(actual.map(out => out.toString())).toEqual(['string:' + line]);
+    expect(actual.map(out => out.toString())).toEqual(['string:JavaScript']);
 });
 
 it('parses string with whitespaces', () => {
     const lexer = new Lexer();
     const line = '"a lenin vseh poslal na pervomay"';
     const actual = lexer.parse(line);
-    expect(actual.map(out => out.toString())).toEqual(['string:' + line]);
+    expect(actual.map(out => out.toString())).toEqual(['string:a lenin vseh poslal na pervomay']);
 });
 
 it('parses string with leading and ending whitespaces', () => {
     const lexer = new Lexer();
     const line = '"  likeawind   "';
     const actual = lexer.parse(line);
-    expect(actual.map(out => out.toString())).toEqual(['string:' + line]);
+    expect(actual.map(out => out.toString())).toEqual(['string:  likeawind   ']);
 });
 
 it('fails reading token starting by a number', () => {
