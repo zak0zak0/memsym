@@ -33,8 +33,6 @@ export class MemSym {
         const record = new Record(+dataType, label, value);
 
         this.#stack.push(record);
-        console.log('var declared: ', record);
-        console.log(this.records);
     }
 
     get records() {
