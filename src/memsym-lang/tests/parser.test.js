@@ -1,5 +1,5 @@
 import { DeclarationNode } from '../nodes/declaration';
-import { Parser } from '../parser';
+import { Parser, ParserError } from '../parser';
 import { Token, tokenType } from '../token';
 
 const tt = tokenType;
@@ -26,4 +26,24 @@ it('returns DeclarationNode', () => {
     expect(actual.type).toBe('int');
     expect(actual.name).toBe('a');
     expect(actual.value).toBe('5');
+});
+
+it('throws if there is no name', () => {
+    const parser = new Parser();
+    const input = [new Token(tt.TYPE, 'int'), new Token(tt.EQUAL, '='), new Token(tt.NUMBER, '5')];
+    const throwing = () => {
+        parser.parse(input);
+    }    
+    expect(throwing).toThrow(ParserError);
+    expect(throwing).toThrow("Unexpected token [equal:=]");
+});
+
+it('throws if type is mismatch', () => {
+    const parser = new Parser();
+    const input = [new Token(tt.TYPE, 'int'),  new Token(tt.NAME, 'a'), new Token(tt.EQUAL, '='), new Token(tt.STRING, '5')];
+    const throwing = () => {
+        parser.parse(input);
+    }    
+    expect(throwing).toThrow(ParserError);
+    expect(throwing).toThrow("Unexpected token [string:5]");
 });
