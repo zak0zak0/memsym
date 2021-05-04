@@ -2,6 +2,7 @@ import './App.css';
 import { MemProvider } from './components/memcontext';
 import { InputCard } from './components/inputCard';
 import { StackView } from './components/stackView';
+import { ClearMemoryButton } from './components/clear-memory-button';
 import { Container, Row, Col, Card, Navbar } from 'react-bootstrap';
 import { MemSym } from './memsym/memsym';
 import packageJson from '../package.json';
@@ -28,13 +29,13 @@ function App() {
         </Navbar>
         <Row>
           <Col xs="12" sm="6" md="4" lg="3">
-            <InputCard />
+            <InputCard />            
           </Col>
           <Col xs="12" sm="12" md="8" lg="5">
             <Card>
               <Card.Body>
                 <Card.Title>
-                  Stack
+                  Stack <ClearMemoryButton />
                 </Card.Title>
                 <StackView />
               </Card.Body>

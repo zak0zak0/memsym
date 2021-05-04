@@ -1,6 +1,6 @@
 {
-  "name": "mem-sim",
-  "version": "1.2.1",
+  "name": "memsym",
+  "version": "1.3.0",
   "private": true,
   "homepage": "http://zak0zak0.github.io/memsym",
   "dependencies": {

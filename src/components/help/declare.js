@@ -5,15 +5,15 @@ export function Declare() {
             <p>
                 format: <br />
                 <code>
-                    &lt;TYPE&gt; &lt;NAME&gt; &lt;VALUE&gt;
+                    &lt;TYPE&gt; &lt;NAME&gt; = &lt;VALUE&gt;
                     <br />
                 </code>
             </p>
             <p>
                 examples: <br />
                 <code>
-                    int a 34<br />
-                    string b abcdef1<br />
+                    int a = 34<br />
+                    string b = "abcdef1"<br />
                 </code>
             </p>
         </>

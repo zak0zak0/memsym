@@ -1,0 +1,22 @@
+<syntax> ::= <expr> | <expr> <EOL> <syntax>
+<expr> ::= <opt-space> <intruction> <opt-space>
+<instruction> ::= <declare> # to be completed
+<declare> ::= <type><space><name><opt-space><equal><opt-space><value>
+<type> ::= "int" | "char" | "string" | "bool"
+<name> ::= <start-name-char><name-char>
+<value> ::= <int-literal>|<char-literal>|<bool-literal>|<string-literal>
+<int-literal> ::= <minus> <numeric> | <numeric>
+<numeric> ::= <digit> | <digit> <numeric>
+<string-literal> ::= '"' <string> '"'
+<string> ::= "" | <char-literal> <string>
+<char-literal> ::= "'" [.] "'" # regex for 1 symbol
+<bool-literal> ::= "true" | "false"
+<minus> ::= "-"
+<digit> ::= [0-9]
+<start-name-char> ::= [_a-zA-Z]
+<name-char> ::= "" | [_a-zA-Z0-9]
+<equal> ::= "="
+<space> ::= " " | " " <space>
+<opt-space> ::= "" | " " <opt-space>
+<EOL> ::= "\n"
+

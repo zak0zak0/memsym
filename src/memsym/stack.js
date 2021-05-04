@@ -1,4 +1,4 @@
-import { DataType } from "./data-type";
+import { DataType } from "../common/data-type";
 import { Record } from "./record";
 
 export class Stack {
